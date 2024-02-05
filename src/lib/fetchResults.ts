@@ -48,6 +48,8 @@ export async function fetchResults(searchParams: SearchParams) {
     });
   });
 
+  console.log("First Result >>>", results[0].title);
+
   return {
     content: {
       listings: results,

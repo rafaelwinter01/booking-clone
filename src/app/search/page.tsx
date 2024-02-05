@@ -12,8 +12,8 @@ async function SearchPage({ searchParams }: SearchPageProps) {
   if (!searchParams.url) return notFound();
 
   const results = await fetchResults(searchParams);
-
   if (!results) return <div>No results were found...</div>;
+  console.log("Total results found: ", results.content.listings.length);
 
   return (
     <section>
