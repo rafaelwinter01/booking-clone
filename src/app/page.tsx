@@ -4,7 +4,7 @@ import { trending_data } from "@/data/trending";
 
 export default function Home() {
   return (
-    <main className="bg-[#013B94]">
+    <main className="bg-[#013B94] h-screen">
       <section className="max-w-7xl mx-auto p-6">
         <h2 className="font-bold text-5xl text-white">Find your next stay</h2>
         <h3 className="text-white py-5 text-xl">
@@ -14,7 +14,7 @@ export default function Home() {
       <section className="m-4 mt-0 -mb-14 px-2 lg:px-4">
         <SearchForm />
       </section>
-      <section className="mx-auto max-w-7xl mt-10 p-6 bg-white rounded-t-xl">
+      <section className="mx-auto max-w-7xl mt-10 p-6 bg-white rounded-xl">
         <div className="pt-5">
           <h3 className="text-xl font-bold">Trending Destinations</h3>
           <p className="font-light">
@@ -24,6 +24,7 @@ export default function Home() {
         <div className="flex space-x-4 overflow-x-scroll">
           {trending_data.map((item) => (
             <div key={item.id} className="space-y-1 shrink-0 cursor-pointer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 key={item.id}
                 className="w-80 h-72 object-cover rounded pb-2"

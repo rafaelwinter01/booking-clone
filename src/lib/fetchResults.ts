@@ -27,7 +27,8 @@ export async function fetchResults(searchParams: SearchParams) {
 
   const $ = cheerio.load(html);
 
-  const lookItems = $("[data-testid='property-card-container']");
+  const boxElement = "[data-testid='property-card-container']";
+  const lookItems = $(boxElement);
 
   const results = new Array<Listing>();
   lookItems.each((index, element) => {
@@ -41,14 +42,12 @@ export async function fetchResults(searchParams: SearchParams) {
       rating_word: $(element)
         .find("div.a3b8729ab1.e6208ee469.cb2cbb3ccb")
         .text(),
-      rating: $(element).find("div.a3b8729ab1.d86cee9b25").text(),
+      rating: $(element).find("div.a3b8729ab1.d86cee9b25").text().split("S")[0],
       rating_count: $(element)
         .find("div.abf093bdfe.f45d8e4c32.d935416c47")
         .text(),
     });
   });
-
-  console.log("First Result >>>", results[0].title);
 
   return {
     content: {

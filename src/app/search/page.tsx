@@ -14,7 +14,6 @@ async function SearchPage({ searchParams }: SearchPageProps) {
   const results = await fetchResults(searchParams);
   if (!results || !results.content.listings)
     return <div>No results were found...</div>;
-  console.log("Total results found: ", results.content.listings.length);
 
   return (
     <section>
@@ -31,6 +30,7 @@ async function SearchPage({ searchParams }: SearchPageProps) {
           {results.content.total_listings}
         </h3>
         <div className="space-y-2 mt-5">
+          {results.content.total_listings} Items found
           {results.content.listings.map((item: Listing, i) => (
             // eslint-disable-next-line react/jsx-key
             <Card {...item} key={i} />
